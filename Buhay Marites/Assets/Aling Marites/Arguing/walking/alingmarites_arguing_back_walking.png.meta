@@ -1,7 +1,19 @@
 fileFormatVersion: 2
 guid: 7009d8ba387270140b0fda40470f6fec
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 842239273682669245
+    second: alingmarites_arguing_back_walking_0
+  - first:
+      213: 1838963412895157808
+    second: alingmarites_arguing_back_walking_1
+  - first:
+      213: 595088938344198333
+    second: alingmarites_arguing_back_walking_2
+  - first:
+      213: 866481449069654945
+    second: alingmarites_arguing_back_walking_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -101,7 +113,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: alingmarites_arguing_back_walking_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 249
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbe0db3382c30bb00800000000000000
+      internalID: 842239273682669245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alingmarites_arguing_back_walking_1
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 0
+        width: 259
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03e4e841b7f458910800000000000000
+      internalID: 1838963412895157808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alingmarites_arguing_back_walking_2
+      rect:
+        serializedVersion: 2
+        x: 506
+        y: 0
+        width: 262
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db035cb8c3e224800800000000000000
+      internalID: 595088938344198333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alingmarites_arguing_back_walking_3
+      rect:
+        serializedVersion: 2
+        x: 765
+        y: 0
+        width: 259
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a33340894c560c00800000000000000
+      internalID: 866481449069654945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
