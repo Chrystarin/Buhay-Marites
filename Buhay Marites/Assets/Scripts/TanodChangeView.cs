@@ -38,18 +38,10 @@ public class TanodChangeView : MonoBehaviour
         Vector3 rotateAngle = viewDirection.transform.eulerAngles;
 
         // Identify the which direction is facing by angles
-        switch (rotateAngle.z)
-        {
-            case 0:
-                return 0;
-            case 90:
-                return 3;
-            case 180:
-                return 2;
-            case 270:
-                return 1;
-            default:
-                return rotationDirection;
-        }
+        if (rotateAngle.z >= 315 || rotateAngle.z < 45)  return 0;
+        if (rotateAngle.z >= 45  && rotateAngle.z < 135) return 3;
+        if (rotateAngle.z >= 135 && rotateAngle.z < 225) return 2;
+        if (rotateAngle.z >= 225 && rotateAngle.z < 315) return 1;
+        return rotationDirection;
     }
 }

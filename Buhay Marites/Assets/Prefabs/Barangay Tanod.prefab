@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6010175618342892176}
   - component: {fileID: 6010175618342892179}
   - component: {fileID: 6010175618342892178}
+  - component: {fileID: 3452986443218141707}
   m_Layer: 0
   m_Name: Barangay Tanod
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6010175618342892181}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.51, y: 1.98, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6010175619524351411}
@@ -103,6 +104,34 @@ MonoBehaviour:
   - {fileID: 21300000, guid: daa5055b8c16a8542bce0eb2ab4c59c5, type: 3}
   - {fileID: 21300000, guid: a907c23804d86a746800207b4caa68df, type: 3}
   rotationDirection: 0
+--- !u!114 &3452986443218141707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6010175618342892181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  drawGizmos: 1
+  detailedGizmos: 0
+  startEndModifier:
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  graphMask:
+    value: -1
 --- !u!1 &6010175619524351410
 GameObject:
   m_ObjectHideFlags: 0
@@ -113,6 +142,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6010175619524351411}
   - component: {fileID: 8876220940895373459}
+  - component: {fileID: 1830033438518664114}
   m_Layer: 0
   m_Name: view direction
   m_TagString: Untagged
@@ -127,7 +157,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6010175619524351410}
-  m_LocalRotation: {x: -0, y: -0, z: 0.02617695, w: 0.99965733}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -156,5 +186,25 @@ MonoBehaviour:
     m_Bits: 128
   player: {fileID: 0}
   playerVisible: 0
-  rotateInterval: 1
+--- !u!114 &1830033438518664114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6010175619524351410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da3a30b563a437943b790d50250c9aa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  tanod: {fileID: 6010175618342892181}
+  rotateInterval: 2
   rotateSpeed: 3
+  walkInterval: 1
+  walkSpeed: 2
+  chaseSpeed: 3
+  nextWaypointDistance: 3
+  seeker: {fileID: 3452986443218141707}
+  rb: {fileID: 0}

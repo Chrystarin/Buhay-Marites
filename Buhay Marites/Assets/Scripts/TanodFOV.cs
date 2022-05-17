@@ -11,77 +11,18 @@ public class TanodFOV : MonoBehaviour
 
     // Game Objects
     public LayerMask playerLayer, wallLayer;
-    private GameObject player;
-    public GameObject hitted;
+    public GameObject player;
 
     // Player visibility
     public bool playerVisible;
-
-    /*
-     * Barangay Tanod Status:
-     * 0: Idling
-     * 1: Chasing
-     * 2: Returning
-     */
-    [Range(0, 2)]
-    private int tanodStatus = 0;
-
-    // Rotation settings
-    public float rotateInterval = 1f;
-    public float rotateSpeed = 3f;
-
-    private float rInterval;
-    private float direction;
-    private float rotateAngle = 90f;
-
-    // Walk settings
-    public float walkInterval = 1f;
-    public float walkSpeed = 2f;
-
-    private float wInterval;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
 
-        ChangeDirection();
-        rInterval = rotateInterval;
-
         // Start the checking
         StartCoroutine(checkFOV(0.2f));
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        // Rotation interval
-        if (rInterval <= 0)
-        {
-            // Rotation
-            if (rotateAngle >= 0)
-            {
-                transform.eulerAngles += new Vector3(0f, 0f, rotateSpeed * direction);
-            }
-            else
-            {
-                // Normalize rotation angle
-                Vector3 rotate = transform.eulerAngles;
-                rotate.z = Mathf.Round(rotate.z);
-
-                float excess = rotate.z % 90;
-                rotate.z += excess < 45 ? -excess : 90 - excess;
-
-                transform.eulerAngles = rotate;
-
-                // Reset fields
-                rInterval = rotateInterval;
-                ChangeDirection();
-                rotateAngle = 90f;
-            }
-            rotateAngle -= rotateSpeed; // Rotation counter
-        }
-        rInterval -= Time.deltaTime; // Interval counter
     }
 
     // This will limit the number of checks per second
@@ -107,7 +48,7 @@ public class TanodFOV : MonoBehaviour
             Vector2 directionToPlayer = (found.position - transform.position).normalized;
 
             // Check if the Player is in FOV range
-            if (Vector2.Angle(-transform.right, directionToPlayer) < viewAngle / 2)
+            if (Vector2.Angle(transform.up, directionToPlayer) < viewAngle / 2)
             {
                 // Get the distance from the Player to this Tanod
                 float distanceToPlayer = Vector2.Distance(transform.position, found.position);
@@ -125,13 +66,6 @@ public class TanodFOV : MonoBehaviour
         // Reset Player visibility
         if (playerVisible)
             playerVisible = false;
-    }
-
-    // Give a random direction of rotation
-    private void ChangeDirection()
-    {
-        float[] directions = { 1f, -1f };
-        direction = directions[Random.Range(0, directions.Length)];
     }
 
     private void OnDrawGizmos()
