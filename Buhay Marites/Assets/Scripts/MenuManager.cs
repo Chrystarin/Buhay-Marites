@@ -56,7 +56,7 @@ public class MenuManager : MonoBehaviour
 
     public void PlayOnClick()
     {
-        SceneManager.LoadScene("LevelOne");
+        SceneManager.LoadScene("Map Template");
     }
 
     public void LevelsOnClick()

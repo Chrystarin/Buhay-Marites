@@ -64,6 +64,9 @@
     <Compile Include="Assets\Scripts\CameraManager.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\GameOver.cs" />
+    <Compile Include="Assets\Scripts\GatherGossip.cs" />
+    <Compile Include="Assets\Scripts\SpreadGossip.cs" />
+    <Compile Include="Assets\Scripts\Mechanics.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
