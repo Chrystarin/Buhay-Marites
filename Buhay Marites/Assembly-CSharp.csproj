@@ -56,10 +56,12 @@
     <Analyzer Include="D:\Apps\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\TanodFOV.cs" />
-    <Compile Include="Assets\Scripts\TanodChangeView.cs" />
-    <Compile Include="Assets\Scripts\TanodMovement.cs" />
     <Compile Include="Assets\Editors\TanodFOVEditor.cs" />
+    <Compile Include="Assets\Scripts\TanodShowAlert.cs" />
+    <Compile Include="Assets\Scripts\TanodFOV.cs" />
+    <Compile Include="Assets\Scripts\TanodMovement.cs" />
+    <Compile Include="Assets\Scripts\TanodChangeView.cs" />
+    <Compile Include="Assets\Scripts\TanodWaypoint.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -724,17 +726,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="AstarPathfindingProjectEditor.csproj">
-      <Project>{8D78270C-D581-6B63-8B18-4A7FD4BE3084}</Project>
-      <Name>AstarPathfindingProjectEditor</Name>
+    <ProjectReference Include="PackageToolsEditor.csproj">
+      <Project>{028B6ED7-8CB0-E121-51D0-8951208CFFB9}</Project>
+      <Name>PackageToolsEditor</Name>
     </ProjectReference>
     <ProjectReference Include="AstarPathfindingProject.csproj">
       <Project>{1FB71930-9366-EBF2-041C-5EE461333478}</Project>
       <Name>AstarPathfindingProject</Name>
     </ProjectReference>
-    <ProjectReference Include="PackageToolsEditor.csproj">
-      <Project>{028B6ED7-8CB0-E121-51D0-8951208CFFB9}</Project>
-      <Name>PackageToolsEditor</Name>
+    <ProjectReference Include="AstarPathfindingProjectEditor.csproj">
+      <Project>{8D78270C-D581-6B63-8B18-4A7FD4BE3084}</Project>
+      <Name>AstarPathfindingProjectEditor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

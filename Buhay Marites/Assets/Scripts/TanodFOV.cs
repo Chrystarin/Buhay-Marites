@@ -14,7 +14,7 @@ public class TanodFOV : MonoBehaviour
     public GameObject player;
 
     // Player visibility
-    public bool playerVisible;
+    public bool playerVisible = false;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +29,7 @@ public class TanodFOV : MonoBehaviour
     // instead of per frame to improve performance
     private IEnumerator checkFOV(float delay)
     {
-        while (true)
+        while (!playerVisible)
         {
             yield return new WaitForSeconds(delay);
             FOV();
@@ -56,16 +56,8 @@ public class TanodFOV : MonoBehaviour
                 // Check if there is a wall in between the Player and this Tanod 
                 if (!Physics2D.Raycast(transform.position, directionToPlayer, distanceToPlayer, wallLayer))
                     playerVisible = true;
-                else
-                    playerVisible = false;
-
-                return;
             }
         }
-
-        // Reset Player visibility
-        if (playerVisible)
-            playerVisible = false;
     }
 
     private void OnDrawGizmos()

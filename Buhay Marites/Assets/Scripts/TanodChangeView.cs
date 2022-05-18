@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public class TanodChangeView : MonoBehaviour
 {
@@ -9,27 +10,58 @@ public class TanodChangeView : MonoBehaviour
      */
 
     public GameObject viewDirection;
-    public Sprite[] directionSprites;
+    public GameObject alert;
+    public Rigidbody2D rb;
+    public Sprite[] idleSprites;
+
+    public TanodFOV fov;
 
     public int rotationDirection;
+    private Sprite alertSprite;
 
-    private SpriteRenderer spriteRenderer;
+    public SpriteRenderer spriteRenderer;
+    public SpriteRenderer alertRenderer;
 
     // Start is called before the first frame update
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        alertSprite = alertRenderer.sprite;
+        alertRenderer.sprite = null;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Change the sprite according to direction facing
-        if(rotationDirection != RotationDirection())
+        if(fov.playerVisible)
         {
-            spriteRenderer.sprite = directionSprites[RotationDirection()];
-            rotationDirection = RotationDirection();
+            // Change sprite according to view direction using the velocity
+            // TOP | BOTTOM
+            if (Mathf.Abs(rb.velocity.y) > Mathf.Abs(rb.velocity.x))
+            {
+                if (rb.velocity.y >= 0f) rotationDirection = 0;
+                else                     rotationDirection = 2;
+            }
+            // LEFT | RIGHT
+            else
+            {
+                if (rb.velocity.x > 0f) rotationDirection = 1;
+                else                    rotationDirection = 3;
+            }
+
+            //if (spriteRenderer.sprite != idleSprites[rotationDirection])
+            spriteRenderer.sprite = idleSprites[rotationDirection];
         }
+        else
+        {
+            if (rotationDirection != RotationDirection())
+            {
+                spriteRenderer.sprite = idleSprites[RotationDirection()];
+                rotationDirection = RotationDirection();
+            }
+        }
+
+        // Show alert icon if player found
+        if (viewDirection.GetComponent<TanodFOV>().playerVisible) alertRenderer.sprite = alertSprite;
     }
 
     int RotationDirection()
