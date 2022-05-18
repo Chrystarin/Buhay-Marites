@@ -56,8 +56,13 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Compile Include="Assets\Scripts\CameraManager.cs" />
     <Compile Include="Assets\Scripts\MenuManager.cs" />
+=======
+    <Compile Include="Assets\CameraFollow.cs" />
+    <Compile Include="Assets\PlayerMovement.cs" />
+>>>>>>> Player-Movement
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
