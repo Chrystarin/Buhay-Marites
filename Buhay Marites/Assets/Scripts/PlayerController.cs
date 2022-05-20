@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speed;
+
     void Update()
     {
 
@@ -27,5 +28,6 @@ public class PlayerController : MonoBehaviour
         {
             transform.Translate(Vector2.up * speed);
         }
+
     }
 }

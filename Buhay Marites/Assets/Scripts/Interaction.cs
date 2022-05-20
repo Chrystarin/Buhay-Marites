@@ -20,8 +20,8 @@ public class Interaction : MonoBehaviour
     public LayerMask detectionLayer;
 
     //Animation State
-    const string Player_Listening = "Player_listen";
-    const string Player_Idle = "Player_idle";
+    public string Player_Listening = "Player_listen";
+    public string Player_Idle = "Player_idle";
 
     void Start()
     {
@@ -57,7 +57,7 @@ public class Interaction : MonoBehaviour
     }
 
     // to change the state of the animation
-    void ChangeAnimationState(string newState)
+    public void ChangeAnimationState(string newState)
     {
         animator.Play(newState);
     }

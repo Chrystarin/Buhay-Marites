@@ -46,6 +46,7 @@ public class HUDController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
     }
 
     public void ActiveTaskGather()
@@ -83,7 +84,6 @@ public class HUDController : MonoBehaviour
     public void ActiveTaskGoHome()
     {
         Meter.SetActive(false);
-
 
         TaskGather.SetActive(false);
         TaskGossip.SetActive(false);

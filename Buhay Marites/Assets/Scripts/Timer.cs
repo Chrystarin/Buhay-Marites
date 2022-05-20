@@ -13,6 +13,8 @@ public class Timer : MonoBehaviour
     public float time;
     public float timeRemaining;
     public bool timerIsActive = false;
+    public string minutes;
+    public string seconds;
 
     
 
@@ -36,7 +38,19 @@ public class Timer : MonoBehaviour
             {
                 timeRemaining -= Time.deltaTime;
                 TimerCircle.fillAmount = timeRemaining / time;
-                timerText.text = ((int)(timeRemaining / 60)) + ":" + ((int)(timeRemaining % 60));
+
+                minutes = ""+((int)(timeRemaining / 60));
+
+                if((int)(timeRemaining % 60) > 9)
+                {
+                    seconds = ""+(int)(timeRemaining % 60);
+                }
+                else
+                {
+                    seconds = "0" + ((int)(timeRemaining % 60));
+                }
+
+                timerText.text = minutes  + ":" + seconds;
             }
             else
             {
