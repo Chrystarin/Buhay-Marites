@@ -59,29 +59,4 @@ public class TanodFOV : MonoBehaviour
             }
         }
     }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.white;
-        UnityEditor.Handles.DrawWireDisc(transform.position, Vector3.forward, radius);
-
-        Vector3 angle1 = DirectionFromAngle(-transform.eulerAngles.z, -viewAngle / 2);
-        Vector3 angle2 = DirectionFromAngle(-transform.eulerAngles.z, viewAngle / 2);
-
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawLine(transform.position, transform.position + angle1 * radius);
-        Gizmos.DrawLine(transform.position, transform.position + angle2 * radius);
-
-        if (playerVisible)
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawLine(transform.position, player.transform.position);
-        }
-    }
-
-    private Vector2 DirectionFromAngle(float eY, float angleDeg)
-    {
-        angleDeg += eY;
-        return new Vector2(Mathf.Sin(angleDeg * Mathf.Deg2Rad), Mathf.Cos(angleDeg * Mathf.Deg2Rad));
-    }
 }

@@ -12,19 +12,27 @@ public class TanodChangeView : MonoBehaviour
     public GameObject viewDirection;
     public GameObject alert;
     public Rigidbody2D rb;
-    public Sprite[] idleSprites;
 
-    public TanodFOV fov;
+    TanodFOV fov;
+    TanodMovement move;
+
+    Animator animator;
+    string[] idleAnimations = { "Tanod_Back_Idle", "Tanod_Right_Idle", "Tanod_Front_Idle", "Tanod_Left_Idle" };
+    string[] walkAnimations = { "Tanod_Back_Walking", "Tanod_Right_Walking", "Tanod_Front_Walking", "Tanod_Left_Walking" };
+    string currentAnimation;
 
     public int rotationDirection;
-    private Sprite alertSprite;
-
-    public SpriteRenderer spriteRenderer;
+    
+    Sprite alertSprite;
     public SpriteRenderer alertRenderer;
 
     // Start is called before the first frame update
     void Start()
     {
+        fov = viewDirection.GetComponent<TanodFOV>();
+        move = viewDirection.GetComponent<TanodMovement>();
+        animator = GetComponent<Animator>();
+
         alertSprite = alertRenderer.sprite;
         alertRenderer.sprite = null;
     }
@@ -32,36 +40,46 @@ public class TanodChangeView : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(fov.playerVisible)
+        if (move.tanodGameOver)
         {
+            PlayAnimation("Tanod_GameOver");
+            return;
+        }
+
+        if (fov.playerVisible)
+        {
+            // Show alert icon
+            alertRenderer.sprite = alertSprite;
+
             // Change sprite according to view direction using the velocity
-            // TOP | BOTTOM
             if (Mathf.Abs(rb.velocity.y) > Mathf.Abs(rb.velocity.x))
             {
-                if (rb.velocity.y >= 0f) rotationDirection = 0;
-                else                     rotationDirection = 2;
+                if (rb.velocity.y >= 0f) rotationDirection = 0; // TOP
+                else                     rotationDirection = 2; // BOTTOM
             }
-            // LEFT | RIGHT
             else
             {
-                if (rb.velocity.x > 0f) rotationDirection = 1;
-                else                    rotationDirection = 3;
+                if (rb.velocity.x > 0f) rotationDirection = 1;  // RIGHT
+                else                    rotationDirection = 3;  // LEFT
             }
-
-            //if (spriteRenderer.sprite != idleSprites[rotationDirection])
-            spriteRenderer.sprite = idleSprites[rotationDirection];
         }
         else
         {
-            if (rotationDirection != RotationDirection())
-            {
-                spriteRenderer.sprite = idleSprites[RotationDirection()];
-                rotationDirection = RotationDirection();
-            }
+            rotationDirection = RotationDirection();
         }
 
-        // Show alert icon if player found
-        if (viewDirection.GetComponent<TanodFOV>().playerVisible) alertRenderer.sprite = alertSprite;
+        if (move.isWalking)
+            PlayAnimation(walkAnimations[rotationDirection]);
+        else
+            PlayAnimation(idleAnimations[rotationDirection]);
+    }
+
+    void PlayAnimation(string animation)
+    {
+        if (currentAnimation == animation) return;
+
+        animator.Play(animation);
+        currentAnimation = animation;
     }
 
     int RotationDirection()

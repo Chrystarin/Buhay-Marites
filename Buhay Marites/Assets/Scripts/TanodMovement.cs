@@ -7,18 +7,25 @@ public class TanodMovement : MonoBehaviour
 {
     public TanodFOV fov;
     public TanodChangeView view;
-    public Transform target;
     public TanodWaypoint currentPoint;
+    public GameOver gameOver;
+
+    public Transform player;
+    public bool tanodGameOver = false;
+
+    // Distance to trigger game over
+    public float gameOverDistance = 1f;
 
     // Rotation settings
     public float rotateSpeed = 1f;
     public int maxRotateCount = 10;
 
-    float directionAngle = 0f;
+    public float directionAngle = 0f;
     int rotateCounter = 0;
 
     // Walk/Patrol settings
     public float walkSpeed = 6f;
+    public bool isWalking = false;
 
     TanodWaypoint nextPoint;
     int pointStepDirection;
@@ -35,13 +42,12 @@ public class TanodMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        target = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
 
         // Start the constant pathfinding
         InvokeRepeating("FindPath", 0f, 0.5f);
 
         // Initialize next way point
-        //pointStepDirection = Random.Range(0, 2);
         ChangeNextPoint();
 
         // Initialize view direction
@@ -49,14 +55,29 @@ public class TanodMovement : MonoBehaviour
         transform.eulerAngles = new Vector3(0f, 0f, directionAngle);
     }
 
+    private void Update()
+    {
+        // Checks if player is visible
+        if (fov.playerVisible)
+        {
+            isWalking = true;
+
+            // Game Over if the distance between tanod and player is
+            // less than or equal the game over distance
+            if (Vector2.Distance(player.transform.position, rb.position) <= gameOverDistance)
+                gameOver.GameOverActive();
+        }
+    }
+
     void FixedUpdate()
     {
+        if (tanodGameOver) return;
+
         // Check if player is visible to tanod FOV
         if (fov.playerVisible)
         {
             // Rotate the view according the the direction facing
-            Quaternion rotation = Quaternion.AngleAxis(view.rotationDirection * -90f, Vector3.forward);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 750 * Time.deltaTime);
+            Rotate(view.rotationDirection * -90f, 750);
 
             // Check if path is empty
             if (path == null)
@@ -92,7 +113,7 @@ public class TanodMovement : MonoBehaviour
             else
             {
                 RotateOnIdle();
-                rotateCounter = rotateCounter == maxRotateCount ? 0 : rotateCounter;
+                rotateCounter = 0;
             }
         }
     }
@@ -106,12 +127,12 @@ public class TanodMovement : MonoBehaviour
         if (transform.eulerAngles.z != directionAngle)
         {
             // Rotate to next waypoint
-            Quaternion rotation = Quaternion.AngleAxis(directionAngle, Vector3.forward);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotateSpeed * 100 * Time.deltaTime);
+            Rotate(directionAngle, rotateSpeed * 100);
         }
         // Move after rotated
         else
         {
+            isWalking = true;
             MoveToNextIdlePoint();
         }
     }
@@ -135,6 +156,8 @@ public class TanodMovement : MonoBehaviour
             // Update the current point
             currentPoint = nextPoint;
 
+            isWalking = false;
+
             // Change the next point
             ChangeNextPoint();
 
@@ -145,7 +168,7 @@ public class TanodMovement : MonoBehaviour
 
     void RotateOnIdle()
     {
-        // Check if rotation is done
+        // Rotate only if it is not rotatiing
         if (transform.eulerAngles.z == directionAngle)
         {
             // Change the rotation direction
@@ -156,9 +179,14 @@ public class TanodMovement : MonoBehaviour
         else
         {
             // Rotate
-            Quaternion rotation = Quaternion.AngleAxis(directionAngle, Vector3.forward);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotateSpeed * 100 * Time.deltaTime);
+            Rotate(directionAngle, rotateSpeed * 100);
         }
+    }
+
+    void Rotate(float angle, float speed)
+    {
+        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, speed * Time.deltaTime);
     }
 
     // Give a random direction of rotation
@@ -212,7 +240,7 @@ public class TanodMovement : MonoBehaviour
     // Use the pathfinder to generate path to player
     void FindPath()
     {
-        if (seeker.IsDone()) seeker.StartPath(rb.position, target.position, delegate (Path p)
+        if (seeker.IsDone()) seeker.StartPath(rb.position, player.position, delegate (Path p)
         {
             if (!p.error)
             {
