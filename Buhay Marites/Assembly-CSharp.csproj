@@ -57,7 +57,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\GatherGossip.cs" />
+    <Compile Include="Assets\Scripts\SpriteControl.cs" />
     <Compile Include="Assets\Scripts\Mechanics.cs" />
+    <Compile Include="Assets\Scripts\Interaction_SpreadChismis.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\HUDController.cs" />
     <Compile Include="Assets\Editors\TanodFOVEditor.cs" />
@@ -70,9 +72,12 @@
     <Compile Include="Assets\Scripts\CameraManager.cs" />
     <Compile Include="Assets\Scripts\TanodMovement.cs" />
     <Compile Include="Assets\Scripts\TanodChangeView.cs" />
+    <Compile Include="Assets\Scripts\Interaction.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\TanodWaypoint.cs" />
     <Compile Include="Assets\Scripts\GameOver.cs" />
+    <Compile Include="Assets\Scripts\TambayControl.cs" />
+    <Compile Include="Assets\Scripts\GlobalVariables.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

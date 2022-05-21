@@ -13,6 +13,8 @@ public class SpriteControl : MonoBehaviour
     public string Player_Victory = "Player_victory";
     public string Player_Idle = "Player_idle";
 
+    public string Tambay_Arguing = "Tambay_Arguing";
+
 
     void Start()
     {
@@ -31,7 +33,7 @@ public class SpriteControl : MonoBehaviour
 
     public void StopAnimationState(string newState)
     {
-        animator.Play(newState, -1);
+        animator.Play(newState, 0);
     }
 
 }

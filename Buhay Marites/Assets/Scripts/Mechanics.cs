@@ -15,6 +15,8 @@ public class Mechanics : MonoBehaviour
     public GameObject HUD;
     public GameObject Windows;
 
+    public AudioSource Audio;
+
     public Image ProgressBar;
     public float speed;
 
@@ -32,6 +34,7 @@ public class Mechanics : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Excecute if player is in range
         if (insideRange)
         {
             Range.color = new Color((float)0.2146941, (float)1, (float)0.0518868, (float)0.3137255);
@@ -42,6 +45,12 @@ public class Mechanics : MonoBehaviour
                 //Excecute code while left click is held
                 if (Input.GetMouseButton(0))
                 {
+
+                    if (!Audio.isPlaying)
+                    {
+                        Audio.Play();
+                    }
+
                     PlayerMovementScript.moveSpeed = 0;
                     //Excecuted if progress bar isnt full
                     if (ProgressBar.fillAmount < 1)
@@ -90,10 +99,13 @@ public class Mechanics : MonoBehaviour
                     }
                 }
                 else{
+                    //Excecute if mouse is not held
+                    Audio.Stop();
                     PlayerMovementScript.moveSpeed = playerSpeedStorage;
                     SpriteControlScript.StopAnimationState(SpriteControlScript.Player_Idle);
                 }
             }
+            //Excecute if task is to go home
             else
             {
                 if (Input.GetMouseButton(0))
@@ -107,6 +119,7 @@ public class Mechanics : MonoBehaviour
             }
 
         }
+        //Excecute if player is out of range
         else
         {
             Range.color = new Color((float)0.509804, (float)0.509804, (float)0.509804, (float)0.3137255);

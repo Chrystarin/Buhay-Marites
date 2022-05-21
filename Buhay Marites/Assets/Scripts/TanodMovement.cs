@@ -10,6 +10,8 @@ public class TanodMovement : MonoBehaviour
     public TanodWaypoint currentPoint;
     public GameOver gameOver;
 
+    public AudioSource audioAlert;
+
     public Transform player;
     public bool tanodGameOver = false;
 
@@ -61,11 +63,13 @@ public class TanodMovement : MonoBehaviour
         if (fov.playerVisible)
         {
             isWalking = true;
+            audioAlert.Play();
 
             // Game Over if the distance between tanod and player is
             // less than or equal the game over distance
             if (Vector2.Distance(player.transform.position, rb.position) <= gameOverDistance)
                 gameOver.GameOverActive();
+
         }
     }
 

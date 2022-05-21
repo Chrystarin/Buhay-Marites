@@ -8,6 +8,11 @@ public class GameOver : MonoBehaviour
 {
     public GameObject GameOverWindow;
 
+    public HUDController HUDControllerScript;
+    public SpriteControl SpriteControlScript;
+    public PlayerMovement PlayerMovementScript;
+    public GameObject HUD;
+
     public Button btnRetry;
     public Button btnExit;
 
@@ -26,7 +31,10 @@ public class GameOver : MonoBehaviour
 
     public void GameOverActive()
     {
+        SpriteControlScript.ChangeAnimationState(SpriteControlScript.Player_GameOver);
+        PlayerMovementScript.moveSpeed = 0;
         GameOverWindow.SetActive(true);
+        HUD.SetActive(false);
     }
 
     public void GameOverInactive()
