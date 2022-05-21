@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\GatherGossip.cs" />
+    <Compile Include="Assets\Scripts\SpriteControl.cs" />
     <Compile Include="Assets\Scripts\Mechanics.cs" />
     <Compile Include="Assets\Scripts\Interaction_SpreadChismis.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
@@ -69,7 +70,6 @@
     <Compile Include="Assets\Scripts\Interaction.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\GameOver.cs" />
-    <Compile Include="Assets\Scripts\SpriteControl.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
