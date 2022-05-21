@@ -56,17 +56,23 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\GatherGossip.cs" />
+    <Compile Include="Assets\Scripts\Mechanics.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\HUDController.cs" />
+    <Compile Include="Assets\Editors\TanodFOVEditor.cs" />
+    <Compile Include="Assets\Scripts\SpreadGossip.cs" />
+    <Compile Include="Assets\Scripts\TanodShowAlert.cs" />
+    <Compile Include="Assets\Scripts\TanodFOV.cs" />
     <Compile Include="Assets\Scripts\MenuManager.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Timer.cs" />
     <Compile Include="Assets\Scripts\CameraManager.cs" />
+    <Compile Include="Assets\Scripts\TanodMovement.cs" />
+    <Compile Include="Assets\Scripts\TanodChangeView.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
+    <Compile Include="Assets\Scripts\TanodWaypoint.cs" />
     <Compile Include="Assets\Scripts\GameOver.cs" />
-    <Compile Include="Assets\Scripts\GatherGossip.cs" />
-    <Compile Include="Assets\Scripts\SpreadGossip.cs" />
-    <Compile Include="Assets\Scripts\Mechanics.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -282,6 +288,9 @@
     <Reference Include="Unity.VisualStudio.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="PackageToolsEditor">
+      <HintPath>Library\ScriptAssemblies\PackageToolsEditor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.2D.IK.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.2D.IK.Editor.dll</HintPath>
     </Reference>
@@ -315,11 +324,17 @@
     <Reference Include="Unity.Mathematics.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="AstarPathfindingProjectEditor">
+      <HintPath>Library\ScriptAssemblies\AstarPathfindingProjectEditor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.2D.SpriteShape.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.2D.SpriteShape.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Common.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.2D.Common.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Pathfinding.Ionic.Zip.Reduced">
+      <HintPath>Assets\AstarPathfindingProject\Plugins\DotNetZip\Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.31f1\Editor\Data\NetStandard\ref\2.0.0\netstandard.dll</HintPath>
@@ -695,6 +710,10 @@
     <ProjectReference Include="Unity.2D.IK.Runtime.Player.csproj">
       <Project>{32C36617-1EB4-E599-B4BB-684E5849C633}</Project>
       <Name>Unity.2D.IK.Runtime.Player</Name>
+    </ProjectReference>
+    <ProjectReference Include="AstarPathfindingProject.Player.csproj">
+      <Project>{56CE1764-C203-0BF9-E5D8-9DAB937FAD40}</Project>
+      <Name>AstarPathfindingProject.Player</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.2D.Animation.Triangle.Runtime.Player.csproj">
       <Project>{6E56221B-BD8A-3D90-0795-66DCC6438CB3}</Project>
