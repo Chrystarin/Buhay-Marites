@@ -57,18 +57,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\GatherGossip.cs" />
-    <Compile Include="Assets\Scripts\SpriteControl.cs" />
     <Compile Include="Assets\Scripts\Mechanics.cs" />
-    <Compile Include="Assets\Scripts\Interaction_SpreadChismis.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\HUDController.cs" />
+    <Compile Include="Assets\Editors\TanodFOVEditor.cs" />
     <Compile Include="Assets\Scripts\SpreadGossip.cs" />
+    <Compile Include="Assets\Scripts\TanodShowAlert.cs" />
+    <Compile Include="Assets\Scripts\TanodFOV.cs" />
     <Compile Include="Assets\Scripts\MenuManager.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Timer.cs" />
     <Compile Include="Assets\Scripts\CameraManager.cs" />
-    <Compile Include="Assets\Scripts\Interaction.cs" />
+    <Compile Include="Assets\Scripts\TanodMovement.cs" />
+    <Compile Include="Assets\Scripts\TanodChangeView.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
+    <Compile Include="Assets\Scripts\TanodWaypoint.cs" />
     <Compile Include="Assets\Scripts\GameOver.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -293,6 +296,9 @@
     </Reference>
     <Reference Include="UnityEditor.UnityConnectModule">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.31f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Pathfinding.Ionic.Zip.Reduced">
+      <HintPath>Assets\AstarPathfindingProject\Plugins\DotNetZip\Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.31f1\Editor\Data\NetStandard\ref\2.0.0\netstandard.dll</HintPath>
@@ -677,6 +683,10 @@
       <Project>{09B6CF65-F270-0FAB-3EC7-E40CB221A306}</Project>
       <Name>Unity.Timeline</Name>
     </ProjectReference>
+    <ProjectReference Include="PackageToolsEditor.csproj">
+      <Project>{028B6ED7-8CB0-E121-51D0-8951208CFFB9}</Project>
+      <Name>PackageToolsEditor</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.TextMeshPro.csproj">
       <Project>{3670DEB4-A843-E254-3DE2-DDA7839CF1ED}</Project>
       <Name>Unity.TextMeshPro</Name>
@@ -725,6 +735,10 @@
       <Project>{AEC9348A-E26A-DBF9-F1C4-5E88AE9CED82}</Project>
       <Name>Unity.2D.IK.Runtime</Name>
     </ProjectReference>
+    <ProjectReference Include="AstarPathfindingProject.csproj">
+      <Project>{1FB71930-9366-EBF2-041C-5EE461333478}</Project>
+      <Name>AstarPathfindingProject</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.2D.Animation.Triangle.Runtime.csproj">
       <Project>{FABF71D6-3EE1-4738-0714-C906432991E7}</Project>
       <Name>Unity.2D.Animation.Triangle.Runtime</Name>
@@ -748,6 +762,10 @@
     <ProjectReference Include="Unity.2D.Common.Runtime.csproj">
       <Project>{DE3ACA8B-CB18-F67B-0D5D-2C14D8688D83}</Project>
       <Name>Unity.2D.Common.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="AstarPathfindingProjectEditor.csproj">
+      <Project>{8D78270C-D581-6B63-8B18-4A7FD4BE3084}</Project>
+      <Name>AstarPathfindingProjectEditor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.2D.SpriteShape.Editor.csproj">
       <Project>{748DFAC9-3A37-24DF-2CFB-C7288DDB6090}</Project>
