@@ -4392,6 +4392,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barangay Tanod
       objectReference: {fileID: 0}
+    - target: {fileID: 7038313708195375493, guid: d8bd12c9b89c381489752e1a8944fd24, type: 3}
+      propertyPath: m_SortingOrder
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7439438354711950805, guid: d8bd12c9b89c381489752e1a8944fd24, type: 3}
+      propertyPath: radius
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7725220678268232456, guid: d8bd12c9b89c381489752e1a8944fd24, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.56369
